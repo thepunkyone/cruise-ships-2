@@ -23,26 +23,32 @@ describe('constructor', () => {
     it('has a previousPort property', () => {
         expect(ship.previousPort).toBe(null)
     })
+    it('gets added to a port on instantiation', () => {
+        expect(port.ships).toContain(ship);
+    })
 });
 
 describe('setSail', () => {
     let ship;
-    let port;
+    let dover;
+    let calais
     let itinerary;
     beforeEach(() => {
-        port = new Port('Dover');
-        itinerary = new Itinerary([port]);
+        dover = new Port('Dover');
+        calais = new Port('Calais');
+        itinerary = new Itinerary([dover, calais]);
         ship = new Ship(itinerary);        
     })
 
     it('property currentPort is empty', () => {
         ship.setSail(); 
         expect(ship.currentPort).toBeFalsy();
+        expect(dover.ships).not.toContain(ship);
     })
 
     it('previousPort property is currentPort', () => {
         ship.setSail();
-        expect(ship.previousPort).toEqual(port);
+        expect(ship.previousPort).toEqual(dover);
     })
 })
 
@@ -56,5 +62,7 @@ describe('dock', () => {
         ship.setSail();
         ship.dock();
         expect(ship.currentPort).toEqual(calais);
+        expect(calais.ships).toContain(ship);
     })
+
 })
