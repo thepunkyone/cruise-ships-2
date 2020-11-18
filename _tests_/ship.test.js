@@ -5,10 +5,31 @@ const Itinerary = require('../src/itinerary');
 describe('constructor', () => {
     let ship;
     let port;
+    let dover;
+    let calais;
     let itinerary;
     beforeEach(() => {
-        port = new Port('Dover');
-        itinerary = new Itinerary([port]);
+        port = {
+            removeShip: jest.fn(),
+            addShip: jest.fn(),
+        };
+        dover = {
+            ...port,
+            name: 'Dover',
+            ships: [],
+        }
+        calais = {
+            ...port,
+            name: 'Calais',
+            ships: [],
+        }
+
+        itinerary = {
+            ports: [dover, calais]
+        };
+    
+        // port = new Port('Dover');
+        // itinerary = new Itinerary([port]);
         ship = new Ship(itinerary);
     })
     
@@ -17,7 +38,7 @@ describe('constructor', () => {
     });
 
     it('has a current port', () => {
-        expect(ship.currentPort).toBe(port);
+        expect(ship.currentPort).toBe(dover);
     })
 
     it('has a previousPort property', () => {
@@ -48,8 +69,11 @@ describe('setSail', () => {
             name: 'Calais',
             ships: [],
         };
+
+        itinerary = {
+            ports: [dover, calais],
+        };
         
-        itinerary = new Itinerary([dover, calais]);
         ship = new Ship(itinerary);        
     })
 
@@ -87,7 +111,10 @@ describe('dock', () => {
             ships: [],
         };
 
-        const itinerary = new Itinerary([dover, calais])
+        const itinerary = {
+            ports: [dover, calais],
+        };
+
         const ship = new Ship(itinerary);
         
         ship.setSail();
