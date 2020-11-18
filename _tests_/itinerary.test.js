@@ -10,8 +10,8 @@ describe('constructor', () => {
         expect(new Itinerary).toBeInstanceOf(Object);
     })
     it('has a ports property', () => {
-        const dover = new Port('Dover');
-        const calais = new Port('Calais');
+        const dover = jest.fn();
+        const calais = jest.fn();
         const itinerary = new Itinerary([dover, calais]);
         expect(itinerary.ports).toEqual([dover, calais]);
     });
