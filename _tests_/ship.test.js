@@ -23,9 +23,7 @@ describe('constructor', () => {
     it('has a previousPort property', () => {
         expect(ship.previousPort).toBe(null)
     })
-    it('gets added to a port on instantiation', () => {
-        expect(port.ships).toContain(ship);
-    })
+    
 });
 
 describe('setSail', () => {
@@ -33,9 +31,24 @@ describe('setSail', () => {
     let dover;
     let calais
     let itinerary;
+    let port;
     beforeEach(() => {
-        dover = new Port('Dover');
-        calais = new Port('Calais');
+
+        port = {
+            removeShip: jest.fn(),
+            addShip: jest.fn(),
+        };
+        dover = {
+            ...port,
+            name: 'Dover',
+            ships: [],
+        };
+        calais = {
+            ...port,
+            name: 'Calais',
+            ships: [],
+        };
+        
         itinerary = new Itinerary([dover, calais]);
         ship = new Ship(itinerary);        
     })
@@ -43,26 +56,44 @@ describe('setSail', () => {
     it('property currentPort is empty', () => {
         ship.setSail(); 
         expect(ship.currentPort).toBeFalsy();
-        expect(dover.ships).not.toContain(ship);
+        expect(dover.removeShip).toHaveBeenCalledWith(ship);
     })
 
     it('previousPort property is currentPort', () => {
         ship.setSail();
         expect(ship.previousPort).toEqual(dover);
     })
+
+    it('gets added to a port on instantiation', () => {
+        expect(port.addShip).toHaveBeenCalledWith(ship);
+    })
 })
 
 describe('dock', () => {
     it('dock at a different port', () => {
-        const dover = new Port('Dover');
-        const calais = new Port('Calais');
+    
+        const port = {
+            removeShip: jest.fn(),
+            addShip: jest.fn(),
+        }
+        const dover = {
+            ...port,
+            name: 'Dover',
+            ships: [],
+        };
+        const calais = {
+            ...port,
+            name: 'Calais',
+            ships: [],
+        };
+
         const itinerary = new Itinerary([dover, calais])
         const ship = new Ship(itinerary);
         
         ship.setSail();
         ship.dock();
         expect(ship.currentPort).toEqual(calais);
-        expect(calais.ships).toContain(ship);
+        expect(calais.addShip).toHaveBeenCalledWith(ship);
     })
 
 })
