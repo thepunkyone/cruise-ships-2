@@ -26,7 +26,7 @@ The purpose of this project is to build upon the following skills and concepts:
 
 ## Features
 
-There are three classes that can interact with each other to simulate cruise ships as the travel around the globe.
+There are three classes that can interact with each other to simulate cruise ships as they travel around the globe.
 
 Ship objects will have itinerary and port objects. Ships can set sail and dock at ports. Ports hold records of the ships currently docked. Itineraries contain information about the current and previous ports.
 
