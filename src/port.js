@@ -4,6 +4,7 @@
       this.name = name;
       this.ships = [];
     }
+
     addShip(ship) {
       this.ships.push(ship);
     }
@@ -13,9 +14,9 @@
       this.ships.splice(index, 1);
     }
   }
-  if (typeof module !== "undefined" && module.exports) {
+  if (typeof module !== 'undefined' && module.exports) {
     module.exports = Port;
   } else {
     window.Port = Port;
   }
-})();
+}());
