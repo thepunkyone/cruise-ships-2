@@ -15,11 +15,10 @@
         const viewport = document.querySelector('#viewport');
         if (counter % 2 === 0) {
           viewport.style.backgroundImage = "url('../images/water1.png')";
-          counter += 1;
         } else {
           viewport.style.backgroundImage = "url('../images/water0.png')";
-          counter += 1;
         }
+        counter += 1;
       }, 1000);
     }
 
@@ -55,7 +54,6 @@
       const nextPortElement = document.querySelector(
         `[data-port-index='${nextPortIndex}']`,
       );
-      console.log("nextPortElement:" + nextPortElement);
       const shipElement = document.querySelector('#ship');
       const sailInterval = setInterval(() => {
         const shipLeft = parseInt(shipElement.style.left, 10);

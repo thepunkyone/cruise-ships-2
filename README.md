@@ -12,8 +12,7 @@ The purpose of this project is to build upon the following skills and concepts:
 * DRY
 * Single Responsibility Principle
 * Dependency inversion
-* Mocks
-* Spies
+* Test doubles and test isolation
 * DOM manipulation
 
 ## Technologies
@@ -27,12 +26,15 @@ The purpose of this project is to build upon the following skills and concepts:
 * HTML
 * CSS
 * Normalize.css
+* ESLint
 
 ## Features
 
 There are three classes that can interact with each other to simulate cruise ships as they travel around the globe.
 
 Ship objects will have itinerary and port objects. Ships can set sail and dock at ports. Ports hold records of the ships currently docked. Itineraries contain information about the current and previous ports.
+
+All of this is visually respresented by a Graphical User Interface, which includes an animated sea background, multiple 'ports' and a ship icon. With the click of a button, the user is able to launch the ship and sail from port to port.
 
 ## Status
 
