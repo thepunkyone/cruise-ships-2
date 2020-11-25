@@ -45,11 +45,13 @@ body {
   color: white;
   font-family: inherit;
   padding: 10px 20px;
-  position: absolute;
+  position: sticky;
+  top: 250px;
   bottom: 0;
   left: 0;
   width: 100%;
   font-family: 'Thasadith', sans-serif;
+  text-align: center;
 }
 
 #sailbutton:focus {
@@ -61,11 +63,14 @@ body {
 #message {
   padding: 16px;
   font-family: 'Thasadith', sans-serif;
-  position: absolute;
+  position: sticky;
   width: 100%;
   bottom: 0;
   border-top: 3px solid black;
   background-color: white; 
+  top: 250px;
+  left: 0;
+  text-align: center;
 }
 
 #display {
