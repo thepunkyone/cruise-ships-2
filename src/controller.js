@@ -55,20 +55,25 @@
       const nextPortElement = document.querySelector(
         `[data-port-index='${nextPortIndex}']`,
       );
-      const shipElement = document.querySelector('#ship');
-      this.renderMessage(`Now departing ${ship.currentPort.name}`);
-      const sailInterval = setInterval(() => {
-        const shipLeft = parseInt(shipElement.style.left, 10);
-        if (shipLeft === (nextPortElement.offsetLeft - 32)) {
-          ship.setSail();
-          ship.dock();
-          clearInterval(sailInterval);
-        }
-        shipElement.style.left = `${shipLeft + 1}px`;
-      }, 20);
       if (!nextPortElement) {
         this.renderMessage('End of the line. Please disembark.');
+        return;
       }
+      const portPosition = nextPortElement.offsetLeft;
+      const shipElement = document.querySelector('#ship');
+      let shipPosition = shipElement.offsetLeft;
+      ship.setSail();
+      const departingMessage = `Now departing ${ship.itinerary.ports[currentPortIndex].name}`;
+      const sailInterval = setInterval(() => {
+        // const shipLeft = parseInt(shipElement.style.left, 10);
+        if (shipPosition === portPosition - 32) {
+          clearInterval(sailInterval);
+        }
+        shipElement.style.left = `${shipPosition + 1}px`;
+        shipPosition += 1;
+      }, 10);
+      ship.dock();
+      this.renderMessage(departingMessage);
       setTimeout(() => {
         this.renderMessage(`Now arriving at ${ship.itinerary.ports[nextPortIndex].name}`);
       }, 2000);
