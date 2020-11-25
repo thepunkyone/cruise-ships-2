@@ -3,7 +3,6 @@
 A pair-programmed JavaScript project as part of the Software Engineering Fasttrack course at Manchester Codes. We have created the JavaScript code to simulate cruise ships sailing around the world and docking at ports along the way. As a latter stage of the project we have added a Graphical User Interface to display the cruise ships, ports and journeys in the browser.
 
 ![Screenshot of cruise ship GUI](./images/Screenshot.png)
-
 ## General info
 
 The purpose of this project is to build upon the following skills and concepts:
@@ -40,7 +39,7 @@ All of this is visually respresented by a Graphical User Interface, which includ
 
 ## Status
 
-Project status: _in progress_
+Project status: _completed_
 
 ## Contributors
 
