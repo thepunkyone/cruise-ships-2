@@ -15,9 +15,9 @@
       setInterval(() => {
         const viewport = document.querySelector('#viewport');
         if (counter % 2 === 0) {
-          viewport.style.backgroundImage = "url('../images/water1.png')";
+          viewport.style.backgroundImage = "url('./images/water1.png')";
         } else {
-          viewport.style.backgroundImage = "url('../images/water0.png')";
+          viewport.style.backgroundImage = "url('./images/water0.png')";
         }
         counter += 1;
       }, 1000);
