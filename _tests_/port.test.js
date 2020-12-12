@@ -19,7 +19,7 @@ describe('constructor', () => {
 describe('addShip', () => {
   it('adds a ship', () => {
     const port = new Port('Dover');
-    const ship = jest.fn();
+    const ship = {}; // Ships can be simplified to empty objects, same as Ports in the Itinerary test
     port.addShip(ship);
     expect(port.ships).toContain(ship);
   });
@@ -28,8 +28,8 @@ describe('addShip', () => {
 describe('removeShip', () => {
   it('removes a ship', () => {
     const port = new Port('Dover');
-    const titanic = jest.fn();
-    const queenMary = jest.fn();
+    const titanic = {};
+    const queenMary = {};
     port.addShip(titanic);
     port.addShip(queenMary);
     port.removeShip(queenMary);
